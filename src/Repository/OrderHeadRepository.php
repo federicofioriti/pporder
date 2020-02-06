@@ -23,11 +23,12 @@ class OrderHeadRepository extends ServiceEntityRepository
     //  * @return OrderHead[] Returns an array of OrderHead objects
     //  */
     /*
-    public function findByExampleField($value)
+    public function findByDates($data_min, $data_max)
     {
         return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('o.data_min between :datamin and :datamax')
+            ->setParameter('datamin', $data_min)
+            ->andWhere()
             ->orderBy('o.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()

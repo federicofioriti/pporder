@@ -30,6 +30,7 @@ class AppFixtures extends Fixture
             $orderHead->setShippingPrice($this->faker->randomFloat(2,1,10000));
             $orderHead->setPaymentStatus($this->faker->boolean(70));
             $orderHead->setShippingPaymentStatus($this->faker->boolean(40));
+            $orderHead->setDataOrdine($this->faker->dateTime('now'));
             $manager->persist($orderHead);
 
             $this->addReference("order_head" . $orderHead->getId(), $orderHead);

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-5">
+            <div class="form-group">
+                <h1> Order Update</h1>
+                {{ form_start(form) }}
+
+                {{ form_widget(form) }}
+
+                <button type="submit" class="btn btn-primary"> OK </button>
+                <a href="{{ path('orders_list') }}" class="btn btn-danger"> Cancel </a>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript">
+        $('#datetime-picker').datetimepicker({
+            locale: 'it'
+        });
+    </script>
+{% endblock %}

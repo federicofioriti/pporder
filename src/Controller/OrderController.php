@@ -30,7 +30,7 @@ class OrderController extends AbstractController
     }
 
     /**
-     * @Route("/orders/{id}", name="order_head_by_id")
+     * @Route("/orders/{id}", name="order_head_by_id", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function getOrderById(OrderHead $orderHead)
     {

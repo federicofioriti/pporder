@@ -9,8 +9,18 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     subresourceOperations=
+ *     {
+ *          "api_order_heads_order_bodies_get_subresource"=
+ *          {
+ *              "method"="GET",
+ *              "path"="/orders/{id}"
+ *          }
+ *     }
+ *     )
  * @ORM\Entity(repositoryClass="App\Repository\OrderHeadRepository")
+ * @ORM\Table(name="order_head")
  */
 class OrderHead
 {
@@ -29,7 +39,7 @@ class OrderHead
      * @ORM\Column(type="boolean")
      */
     private $shipping_status;
-
+    
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2)
      */
@@ -50,6 +60,11 @@ class OrderHead
      * @ApiSubresource()
      */
     private $orderBodies;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $data_ordine;
 
     public function __construct()
     {
@@ -172,6 +187,18 @@ class OrderHead
                 $orderBody->setIdOrderHead(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDataOrdine(): ?\DateTime
+    {
+        return $this->data_ordine;
+    }
+
+    public function setDataOrdine($data_ordine): self
+    {
+        $this->data_ordine = $data_ordine;
 
         return $this;
     }
